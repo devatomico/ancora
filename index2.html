@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body{
+            margin: 0;
+            padding: 0;
+        }
+        nav{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-around;
+        }
+        a{
+            text-decoration: none;
+            font-family: 'Courier New', Courier, monospace;
+            color: #000000;
+        }
+        #secao-amarela{
+            background-color: #f1c40f;
+        }
+        #secao-azul{
+            background-color: #3498db;
+        }
+        #secao-verde{
+            background-color: #2ecc71;
+        }
+        #secao-vermelha{
+            background-color: #e74c3c;
+        }
+        section{
+            height: 100vh;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#secao-amarela">Seção amarela</a>
+        <a href="#secao-azul">Seção azul</a>
+        <a href="#secao-verde">Seção verde</a>
+        <a href="#secao-vermelha">Seção vermelha</a>
+    </nav>
+    <section id="secao-amarela"></section>
+    <section id="secao-azul"></section>
+    <section id="secao-verde"></section>
+    <section id="secao-vermelha"></section>
+    <script>
+        const allLinks = document.querySelectorAll("nav a");
+
+        for(const link of allLinks){
+            link.addEventListener("click", clickHandler);
+        }
+
+        function clickHandler(e){
+            e.preventDefault();
+            const href = this.getAttribute("href");
+            const offsetTop = document.querySelector(href).offsetTop;
+
+            scroll({
+                top: offsetTop,
+                behavior: "smooth"
+            })
+        }
+    </script>
+</body>
+</html>
